@@ -63,7 +63,9 @@ docker compose up --build
 ```
 
 **4. Access the Dashboard:**
-Open your browser and navigate to ```bash http://localhost:5173 ```. You will see the truck begin its route, update the KPI metrics in real-time, and eventually trigger the geofence breach.
+Open your browser and navigate to ```bash
+                                    http://localhost:5173 ```
+. You will see the truck begin its route, update the KPI metrics in real-time, and eventually trigger the geofence breach.
 
 ## 🔮 Future Improvements
 While the current architecture successfully handles real-time single-vehicle telemetry, the following upgrades are planned for enterprise scale:

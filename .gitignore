@@ -16,3 +16,4 @@ VeloCity_Rea_Time Fleet Telemetry & Logistics Platform.txt
 velocity.db
 ruby_backend.txt
 venv/
+.gitignore

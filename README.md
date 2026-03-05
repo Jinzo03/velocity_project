@@ -52,8 +52,8 @@ Copy the example file:
 ```bash
 
 cp .env.example .env
-Open the new .env file and insert your free Google Gemini API key (get one from Google AI Studio).
 ```
+Open the new .env file and insert your free Google Gemini API key (get one from Google AI Studio),or use another API key from a different LLM.
 
 **3. Build and launch the cluster:**
 

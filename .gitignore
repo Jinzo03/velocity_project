@@ -1,0 +1,18 @@
+# Ignore environment variables
+.env
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore Node modules (React)
+velocity_frontend/node_modules/
+velocity_frontend/dist/
+
+# Ignore Mac OS hidden files
+.DS_Store
+
+VeloCity_Rea_Time Fleet Telemetry & Logistics Platform.txt
+velocity.db
+ruby_backend.txt
+venv/

@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # 0. THE MESSAGE BROKER
+  broker:
+    image: eclipse-mosquitto:latest
+    container_name: velocity_broker
+    ports:
+    - "1883:1883"
+    volumes:
+    - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+  # 1. THE DATABASE
+  db:
+    image: postgis/postgis
+    container_name: velocity_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: velocity_pass
+      POSTGRES_DB: velocity
+    ports:
+      - "5432:5432"
+
+  # 2. THE API (Control Tower)
+  backend:
+    build: .
+    container_name: velocity_backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Notice we use "db:5432" here instead of localhost!
+      - DATABASE_URL=postgresql://postgres:velocity_pass@db:5432/velocity
+      - MQTT_BROKER=broker # Tells python to look for the 'broker' content
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    depends_on:
+      - db
+      - broker
+
+  # 3. THE TRUCK SIMULATOR
+  simulator:
+    build: .
+    container_name: velocity_truck
+    command: python truck_simulator.py
+    environment:
+      # Notice we use "backend:8000" here instead of 127.0.0.1!
+      - MQTT_BROKER=broker  # Tells Python to look for the 'broker' container
+    depends_on:
+      - broker
+
+  # 4. THE FRONTEND (Dashboard)
+  frontend:
+    image: node:20-alpine
+    container_name: velocity_frontend
+    working_dir: /app
+    volumes:
+      - ./velocity_frontend:/app
+    ports:
+      - "5173:5173"
+    # This installs the node modules and starts Vite, exposing it to the browser
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    depends_on:
+      - backend

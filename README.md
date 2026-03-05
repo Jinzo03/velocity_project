@@ -10,7 +10,8 @@
 ##  Overview
 VeloCity is a containerized microservices application designed to simulate, ingest, process, and analyze real-time geospatial IoT telemetry. Built as a comprehensive Data Engineering portfolio project, it bridges the gap between raw sensor data, stream processing, and Generative AI.
 
-**[INSERT A GIF OR SCREENSHOT OF YOUR DASHBOARD HERE]**
+![velocity_frontend-Opera2026-03-0521-05-16-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/3ba4739c-2f22-40e3-820a-e55dd61c9a38)
+
 
 ## 🚀 Key Features
 * **📡 High-Throughput Data Streaming (IoT):** A Python-based virtual sensor publishes GPS coordinates via the **MQTT** protocol (Eclipse Mosquitto broker), replacing traditional, blocking HTTP requests.
@@ -62,7 +63,7 @@ docker compose up --build
 ```
 
 **4. Access the Dashboard:**
-Open your browser and navigate to http://localhost:5173. You will see the truck begin its route, update the KPI metrics in real-time, and eventually trigger the geofence breach.
+Open your browser and navigate to ```bash http://localhost:5173 ```. You will see the truck begin its route, update the KPI metrics in real-time, and eventually trigger the geofence breach.
 
 ## License ##
 This project is open-source and available under the MIT License.

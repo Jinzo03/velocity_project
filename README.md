@@ -63,16 +63,13 @@ docker compose up --build
 ```
 
 **4. Access the Dashboard:**
-Open your browser and navigate to ```bash
-
-                                             http://localhost:5173 ```
-. You will see the truck begin its route, update the KPI metrics in real-time, and eventually trigger the geofence breach.
+Open your browser and navigate to `http://localhost:5173`. You will see the truck begin its route, update the KPI metrics in real-time, and eventually trigger the geofence breach.
 
 ## 🔮 Future Improvements
 While the current architecture successfully handles real-time single-vehicle telemetry, the following upgrades are planned for enterprise scale:
 * **True WebSockets:** Replace the frontend's REST API polling (`setInterval`) with a bi-directional WebSocket connection (FastAPI WebSockets) for instant, zero-latency state updates.
 * **Multi-Vehicle Scaling:** Upgrade the Python simulator to spawn multiple asynchronous threads, publishing telemetry for an entire fleet of 50+ trucks to distinct MQTT topics (e.g., `velocity/telemetry/+`).
-* ** Time-Series Database:** Migrate from standard PostgreSQL to **TimescaleDB** or **InfluxDB** to optimize querying massive amounts of historical coordinate data.
+* **Time-Series Database:** Migrate from standard PostgreSQL to **TimescaleDB** or **InfluxDB** to optimize querying massive amounts of historical coordinate data.
 * **Cloud Deployment:** Map the local Docker Compose network to a cloud provider (AWS EC2 or Google Cloud Compute Engine) with a reverse proxy (Nginx/Traefik) handling SSL termination.
 
 
